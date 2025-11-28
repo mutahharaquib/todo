@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("partials/header") %>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>Todo List</h1>
+            <button id="themeToggle">🌙</button>
+        </header>
+
+        <form action="/add" method="POST" class="add-form">
+            <input type="text" name="text" placeholder="Add a new task..." required>
+            <button type="submit">Add</button>
+        </form>
+
+        <ul class="task-list">
+            <% tasks.forEach(task=> { %>
+                <li class="<%= task.completed ? 'completed' : '' %>">
+                    <form action="/toggle/<%= task._id %>" method="POST">
+                        <input type="checkbox" onchange="this.form.submit()" <%=task.completed ? 'checked' : '' %> >
+                    </form>
+
+                    <span>
+                        <%= task.text %>
+                    </span>
+
+                    <form action="/delete/<%= task._id %>" method="POST">
+                        <button class="delete-btn">✖</button>
+                    </form>
+                </li>
+                <% }) %>
+        </ul>
+
+    </div>
+    <a href="/logout" class="logout-btn">Logout</a>
+
+    <script src="/script.js"></script>
+</body>
+
+</html>

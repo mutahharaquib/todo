@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include("partials/header") %>
+</head>
+
+<body>
+    <div class="auth-container">
+        <h2>Sign Up</h2>
+
+        <form action="/signup" method="POST">
+            <input type="email" name="email" placeholder="Email" required>
+
+            <input type="password" name="password" placeholder="Password" required>
+
+            <button type="submit">Create Account</button>
+        </form>
+
+        <p>Already have an account?
+            <a href="/login">Login</a>
+        </p>
+
+        <button id="themeToggle" class="auth-theme">🌙</button>
+    </div>
+    <script src="/script.js"></script>
+</body>
+
+</html>
